@@ -1,0 +1,25 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root { --bg:#f5f6f9; --panel:#ffffff; --line:#e3e5ec; --ink:#14151a; --mute:#6b6f7e; --accent:#3a4bff; --code:#0f1117; }
+:root.dark { --bg:#0d0e12; --panel:#16171d; --line:#262833; --ink:#ececf1; --mute:#8b8fa0; --accent:#8f9bff; }
+html, body, #root { height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: Onest, system-ui, sans-serif; overflow-x: hidden; }
+.glass { background: color-mix(in srgb, var(--panel) 78%, transparent); backdrop-filter: blur(16px); }
+.safe-b { padding-bottom: max(env(safe-area-inset-bottom), 12px); }
+.safe-t { padding-top: env(safe-area-inset-top); }
+.orb { width: 72px; height: 72px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 28%, #fff 0%, var(--accent) 38%, #1a1f6b 100%);
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--accent) 45%, transparent); animation: breathe 5s ease-in-out infinite; }
+@keyframes breathe { 50% { transform: scale(1.07); box-shadow: 0 16px 56px color-mix(in srgb, var(--accent) 60%, transparent); } }
+@media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+.prose-17 { line-height: 1.7; font-size: 15.5px; overflow-wrap: anywhere; }
+.prose-17 > * + * { margin-top: .8em; }
+.prose-17 ul { list-style: disc; padding-left: 1.3em; } .prose-17 ol { list-style: decimal; padding-left: 1.3em; }
+.prose-17 h1,.prose-17 h2,.prose-17 h3 { font-weight: 600; margin-top: 1.2em; }
+.prose-17 a { color: var(--accent); text-decoration: underline; }
+.prose-17 code:not(pre code) { background: color-mix(in srgb, var(--ink) 9%, transparent); padding: .1em .35em; border-radius: 6px; font-size: .9em; }
+.prose-17 pre { background: var(--code); color: #e6e8ef; padding: 14px 16px; border-radius: 14px; overflow-x: auto; font-size: 13.5px; }
+.prose-17 table { display:block; overflow-x:auto; border-collapse: collapse; } .prose-17 th,.prose-17 td { border:1px solid var(--line); padding:6px 10px; }
+.hljs-keyword,.hljs-built_in { color:#c4a8ff } .hljs-string { color:#9ee6b0 } .hljs-comment { color:#7b8196 } .hljs-number,.hljs-literal { color:#ffcf8a } .hljs-title,.hljs-function { color:#8ec5ff }
+.cursor::after { content:""; display:inline-block; width:7px; height:1.05em; margin-left:2px; vertical-align:text-bottom; background:var(--accent); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
